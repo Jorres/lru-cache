@@ -1,11 +1,5 @@
 local list = {}
 
--- Quick note for the person who will check this:
--- I know I should not have implemented double-linked list from scratch. 
--- Lua is just a new programming language for me and I wanted to have a 
--- small exercise before writing an LRU. I've also covered this class
--- with asserts and tests.
-
 list.new = function ()
     local fst = nil
     local lst = nil

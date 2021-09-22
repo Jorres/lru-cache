@@ -1,11 +1,5 @@
 local list = require"list"
 
--- Quick note for the person who will check this:
--- I've defined these lru invariants:
--- 1. behaves like an LRU - covered by tests
--- 2. does not exceed size at any point of execution - covered with an assert
--- 3. accepts only positive size - covered with an assert
-
 local lru = { }
 
 lru.new = function(max_elems)
