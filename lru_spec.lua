@@ -1,5 +1,6 @@
 local lu = require"luaunit"
 local lru_fabric = require"lru"
+local naive_lru_fabric = require"naive_lru"
 
 function Test_negative_size_lru()
     lu.assertError(function()
@@ -59,6 +60,28 @@ end
 
 function Test_lru_multiple_types_at_once() 
     standart_preemption_scenario(1, "abc", false)
+end
+
+function Test_big_random_input()
+    math.randomseed(os.time())
+
+    local test_size = 10000
+    local lru_size = 100
+    local key_domain_size = lru_size * 2
+
+    local lru = lru_fabric.new(lru_size)
+    local naive_lru = naive_lru_fabric.new(lru_size)
+
+    for _ = 1, test_size, 1 do
+        local key = math.random(1, key_domain_size)
+
+        lru.put(key)
+        naive_lru.put(key)
+
+        for j = 1, key_domain_size, 1 do
+            lu.assertEquals(lru.present(j), naive_lru.present(j))
+        end
+    end
 end
 
 os.exit( lu.LuaUnit.run() )
