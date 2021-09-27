@@ -7,7 +7,9 @@ have locally and will not bother installing. Therefore, I included
 `lua` binary and `luainit` testing library for convenience, so this work
 could be checked with zero-config after cloning the repo.
 
-Why Lua???
+Cloning and running tested on Ubuntu 20.04, clean install.
+
+### Why Lua???
 
 I'm starting to learn Lua right now to use it in an open-source community
 for creating Neovim plugins. This homework was a good opportunity to start
